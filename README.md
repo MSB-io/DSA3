@@ -1,6 +1,6 @@
 # DSA 3: Advanced Data Structures & Algorithms
 
-A repository containing implementations, lecture code, and technical reports on Java Collections, Strongly Connected Components (SCC), and Network Maximum Flow & Minimum Cut algorithms.
+A repository containing implementations, technical documentation, and explanatory guides for Strongly Connected Components (SCC) and Network Maximum Flow & Minimum Cut algorithms.
 
 ---
 
@@ -8,9 +8,6 @@ A repository containing implementations, lecture code, and technical reports on 
 
 ```
 DSA3/
-├── lectures/                           # Foundational Java Collections & Exercises
-│   ├── Lecture1.java                  # ArrayList, operations, Product Cart simulation
-│   └── Lecture2.java                  # LinkedList (Queue), HashSet, HashMap
 ├── algorithms/
 │   ├── scc/                           # Strongly Connected Components (SCC)
 │   │   ├── KosarajusAlgo.java        # Kosaraju-Sharir two-pass DFS algorithm
@@ -18,7 +15,11 @@ DSA3/
 │   └── flow/                          # Network Flow & Cut Problems
 │       ├── FordFulkerson.java        # Ford-Fulkerson Max Flow (Augmenting paths)
 │       └── EdmondsKarp.java          # Max Flow + Min-Cut Edge Identification
-├── docs/                              # Technical Specification & Analysis Reports
+├── docs/                              # Technical Reports & Explanatory Guides
+│   ├── Edmonds_Karp_and_Min_Cut_Explained.md
+│   ├── Ford_Fulkerson_Algorithm_Explained.md
+│   ├── Kosarajus_Algorithm_Explained.md
+│   ├── Tarjans_Algorithm_Explained.md
 │   ├── Edmonds-Karp and Min-Cut Technical Report.pdf
 │   ├── Ford-Fulkerson Algorithm Technical Report.pdf
 │   ├── Kosaraju's Algorithm Technical Report.pdf
@@ -31,16 +32,7 @@ DSA3/
 
 ## Contents & Code Breakdown
 
-### 1. Foundational Java Collections (`lectures/`)
-
-| File | Key Concepts & Methods | Description |
-| :--- | :--- | :--- |
-| [`Lecture1.java`](file:///Users/manthan/Desktop/DSA3/lectures/Lecture1.java) | `ArrayList`, custom object `Product`, `removeIf`, duplicate elimination, linear search | Demonstrates dynamic array manipulation and models an e-commerce shopping cart with product additions, removal by predicate, and bill calculation. |
-| [`Lecture2.java`](file:///Users/manthan/Desktop/DSA3/lectures/Lecture2.java) | `LinkedList`, `HashSet`, `HashMap`, `Map.Entry` | Demonstrates double-ended queue operations (`addFirst`, `removeFirst`), set intersection (`retainAll`), word/number frequency tracking, and finding key-value extremes (topper identification). |
-
----
-
-### 2. Strongly Connected Components (`algorithms/scc/`)
+### 1. Strongly Connected Components (`algorithms/scc/`)
 
 A Strongly Connected Component (SCC) in a directed graph is a maximal subgraph where every vertex is reachable from every other vertex within the component.
 
@@ -51,7 +43,7 @@ A Strongly Connected Component (SCC) in a directed graph is a maximal subgraph w
 
 #### Algorithmic Comparison:
 - **Kosaraju's Algorithm**:
-  1. **Pass 1**: Run DFS on the original directed graph, pushing vertices onto a stack in order of their completion/exit times.
+  1. **Pass 1**: Run DFS on the original directed graph, pushing vertices onto a stack in order of their completion times.
   2. **Transpose**: Construct reversed graph $G^T$ by flipping every edge $(u \to v)$ to $(v \to u)$.
   3. **Pass 2**: Pop vertices from the stack and run DFS on $G^T$. Each DFS tree discovered corresponds to one Strongly Connected Component.
 - **Tarjan's Algorithm**:
@@ -61,7 +53,7 @@ A Strongly Connected Component (SCC) in a directed graph is a maximal subgraph w
 
 ---
 
-### 3. Maximum Network Flow & Minimum Cut (`algorithms/flow/`)
+### 2. Maximum Network Flow & Minimum Cut (`algorithms/flow/`)
 
 Algorithms for finding the maximum possible flow from a source vertex $s$ to a sink vertex $t$ in a flow network with capacity constraints, based on the **Max-Flow Min-Cut Theorem**:
 
@@ -79,7 +71,7 @@ $$\text{Maximum Flow Value} = \text{Capacity of Minimum Cut}$$
 
 ---
 
-### 4. Technical Reports and Guides (`docs/`)
+### 3. Technical Reports and Guides (`docs/`)
 
 The [`docs/`](file:///Users/manthan/Desktop/DSA3/docs/) folder includes technical guides and reports:
 
@@ -100,15 +92,6 @@ The [`docs/`](file:///Users/manthan/Desktop/DSA3/docs/) folder includes technica
 ## How to Compile & Run
 
 You can run any file directly using the **Run** button in VS Code, or from the terminal using standard package-qualified commands:
-
-### Running Lecture Exercises
-```bash
-# Lecture 1: ArrayList & Cart Simulation
-javac lectures/Lecture1.java && java lectures.Lecture1
-
-# Lecture 2: LinkedList, HashSet, HashMap
-javac lectures/Lecture2.java && java lectures.Lecture2
-```
 
 ### Running Graph Algorithms (SCC)
 ```bash
