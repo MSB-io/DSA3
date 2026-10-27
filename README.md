@@ -4,7 +4,7 @@ A repository containing implementations, lecture code, and technical reports on 
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 DSA3/
@@ -29,7 +29,7 @@ DSA3/
 
 ---
 
-## 📚 Contents & Code Breakdown
+## Contents & Code Breakdown
 
 ### 1. Foundational Java Collections (`lectures/`)
 
@@ -89,7 +89,7 @@ The [`docs/`](file:///Users/manthan/Desktop/DSA3/docs/) folder includes comprehe
 
 ---
 
-## 🚀 How to Compile & Run
+## How to Compile & Run
 
 All `.java` files are self-contained without package declarations, allowing you to compile and run each program directly from any terminal:
 
