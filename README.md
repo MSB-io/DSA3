@@ -79,9 +79,15 @@ $$\text{Maximum Flow Value} = \text{Capacity of Minimum Cut}$$
 
 ---
 
-### 4. Technical Reports (`docs/`)
+### 4. Technical Reports and Guides (`docs/`)
 
-The [`docs/`](file:///Users/manthan/Desktop/DSA3/docs/) folder includes comprehensive formal technical reports:
+The [`docs/`](file:///Users/manthan/Desktop/DSA3/docs/) folder includes technical guides and reports:
+
+#### Simplified Technical English (STE) Guides:
+* **[`Kosarajus_Algorithm_Explained.md`](file:///Users/manthan/Desktop/DSA3/docs/Kosarajus_Algorithm_Explained.md)**: Two-pass DFS, graph transposition, and component extraction walkthrough.
+* **[`Tarjans_Algorithm_Explained.md`](file:///Users/manthan/Desktop/DSA3/docs/Tarjans_Algorithm_Explained.md)**: Single-pass DFS, discovery times, low-link values, and stack tracking walkthrough.
+
+#### Formal PDF Reports:
 1. **[`Edmonds-Karp and Min-Cut Technical Report.pdf`](file:///Users/manthan/Desktop/DSA3/docs/Edmonds-Karp%20and%20Min-Cut%20Technical%20Report.pdf)**: Mathematical formulation, residual capacity tracking, and cut-set extraction.
 2. **[`Ford-Fulkerson Algorithm Technical Report.pdf`](file:///Users/manthan/Desktop/DSA3/docs/Ford-Fulkerson%20Algorithm%20Technical%20Report.pdf)**: Augmenting paths, residual graph updates, and network flow applications.
 3. **[`Kosaraju's Algorithm Technical Report.pdf`](file:///Users/manthan/Desktop/DSA3/docs/Kosaraju's%20Algorithm%20Technical%20Report.pdf)**: Transpose graph mechanics, finishing order proofs, and SCC properties.
