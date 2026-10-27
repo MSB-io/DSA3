@@ -87,6 +87,7 @@ The [`docs/`](file:///Users/manthan/Desktop/DSA3/docs/) folder includes technica
 * **[`Kosarajus_Algorithm_Explained.md`](file:///Users/manthan/Desktop/DSA3/docs/Kosarajus_Algorithm_Explained.md)**: Two-pass DFS, graph transposition, and component extraction walkthrough.
 * **[`Tarjans_Algorithm_Explained.md`](file:///Users/manthan/Desktop/DSA3/docs/Tarjans_Algorithm_Explained.md)**: Single-pass DFS, discovery times, low-link values, and stack tracking walkthrough.
 * **[`Ford_Fulkerson_Algorithm_Explained.md`](file:///Users/manthan/Desktop/DSA3/docs/Ford_Fulkerson_Algorithm_Explained.md)**: Augmenting paths, residual graph updates, and max-flow execution trace.
+* **[`Edmonds_Karp_and_Min_Cut_Explained.md`](file:///Users/manthan/Desktop/DSA3/docs/Edmonds_Karp_and_Min_Cut_Explained.md)**: Max-Flow Min-Cut Theorem, reachability partition, and cut set identification.
 
 #### Formal PDF Reports:
 1. **[`Edmonds-Karp and Min-Cut Technical Report.pdf`](file:///Users/manthan/Desktop/DSA3/docs/Edmonds-Karp%20and%20Min-Cut%20Technical%20Report.pdf)**: Mathematical formulation, residual capacity tracking, and cut-set extraction.
