@@ -163,8 +163,8 @@ flowchart LR
     end
 
     subgraph After ["After Augmentation"]
-        aU((u)) -->|residual = 0 (Full)| aV((v))
-        aV -->|residual = 10 (Can Cancel)| aU
+        aU((u)) -->|"residual = 0 (Full)"| aV((v))
+        aV -->|"residual = 10 (Can Cancel)"| aU
     end
 
     classDef box fill:#f8fafc,stroke:#94a3b8,stroke-width:1.5px,color:#1e293b;
