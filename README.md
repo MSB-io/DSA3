@@ -1,4 +1,4 @@
-# DSA 3 — Advanced Data Structures & Algorithms
+# DSA 3: Advanced Data Structures & Algorithms
 
 A repository containing implementations, lecture code, and technical reports on Java Collections, Strongly Connected Components (SCC), and Network Maximum Flow & Minimum Cut algorithms.
 
