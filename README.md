@@ -69,8 +69,8 @@ $$\text{Maximum Flow Value} = \text{Capacity of Minimum Cut}$$
 
 | File | Implementation | Key Capabilities | Complexity |
 | :--- | :--- | :--- | :--- |
-| [`FordFulkerson.java`](file:///Users/manthan/Desktop/DSA3/algorithms/flow/FordFulkerson.java) | Augmenting path discovery via residual graph DFS | Computes the numerical value of maximum network flow | $\mathcal{O}(E \cdot \text{max\_flow})$ |
-| [`EdmondsKarp.java`](file:///Users/manthan/Desktop/DSA3/algorithms/flow/EdmondsKarp.java) | Augmenting path search + Min-Cut Partitioning | Computes max flow **and identifies the exact bottleneck edges** crossing the $(S, T)$ minimum cut cut-set | $\mathcal{O}(E \cdot \text{max\_flow})$ |
+| [`FordFulkerson.java`](file:///Users/manthan/Desktop/DSA3/algorithms/flow/FordFulkerson.java) | Augmenting path discovery via residual graph DFS | Computes the numerical value of maximum network flow | $\mathcal{O}(E \cdot \text{max flow})$ |
+| [`EdmondsKarp.java`](file:///Users/manthan/Desktop/DSA3/algorithms/flow/EdmondsKarp.java) | Augmenting path search + Min-Cut Partitioning | Computes max flow **and identifies the exact bottleneck edges** crossing the $(S, T)$ minimum cut cut-set | $\mathcal{O}(E \cdot \text{max flow})$ |
 
 #### Minimum Cut Set Identification:
 1. After reaching maximum flow (no augmenting paths remain in the residual network), run a reachability traversal from source $s$.
