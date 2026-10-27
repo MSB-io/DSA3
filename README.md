@@ -13,9 +13,10 @@ DSA3/
 │   ├── scc/                           # Strongly Connected Components
 │   │   ├── KosarajusAlgo.java        # Kosaraju algorithm implementation
 │   │   └── TarjanAlgo.java           # Tarjan algorithm implementation
-│   └── flow/                          # Network Flow and Cut Problems
-│       ├── FordFulkerson.java        # Ford-Fulkerson algorithm implementation
-│       └── EdmondsKarp.java          # Edmonds-Karp and Min-Cut implementation
+│   ├── flow/                          # Network Flow and Cut Problems
+│   │   ├── FordFulkerson.java        # Ford-Fulkerson algorithm implementation
+│   │   └── EdmondsKarp.java          # Edmonds-Karp and Min-Cut implementation
+│   └── dp/                            # Dynamic Programming
 ├── docs/                              # Technical Reports and Guides
 │   ├── Edmonds_Karp_and_Min_Cut_Explained.md
 │   ├── Ford_Fulkerson_Algorithm_Explained.md
