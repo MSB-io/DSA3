@@ -1,3 +1,5 @@
+package algorithms.scc;
+
 import java.util.*;
 
 public class TarjanAlgo {

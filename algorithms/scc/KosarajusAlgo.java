@@ -1,3 +1,4 @@
+package algorithms.scc;
 
 import java.util.*;
 

@@ -99,31 +99,31 @@ The [`docs/`](file:///Users/manthan/Desktop/DSA3/docs/) folder includes technica
 
 ## How to Compile & Run
 
-All `.java` files are self-contained without package declarations, allowing you to compile and run each program directly from any terminal:
+You can run any file directly using the **Run** button in VS Code, or from the terminal using standard package-qualified commands:
 
 ### Running Lecture Exercises
 ```bash
 # Lecture 1: ArrayList & Cart Simulation
-javac lectures/Lecture1.java && java -cp lectures Lecture1
+javac lectures/Lecture1.java && java lectures.Lecture1
 
 # Lecture 2: LinkedList, HashSet, HashMap
-javac lectures/Lecture2.java && java -cp lectures Lecture2
+javac lectures/Lecture2.java && java lectures.Lecture2
 ```
 
 ### Running Graph Algorithms (SCC)
 ```bash
 # Kosaraju's Algorithm
-javac algorithms/scc/KosarajusAlgo.java && java -cp algorithms/scc KosarajusAlgo
+javac algorithms/scc/KosarajusAlgo.java && java algorithms.scc.KosarajusAlgo
 
 # Tarjan's Algorithm
-javac algorithms/scc/TarjanAlgo.java && java -cp algorithms/scc TarjanAlgo
+javac algorithms/scc/TarjanAlgo.java && java algorithms.scc.TarjanAlgo
 ```
 
 ### Running Flow Algorithms
 ```bash
 # Ford-Fulkerson Maximum Flow
-javac algorithms/flow/FordFulkerson.java && java -cp algorithms/flow FordFulkerson
+javac algorithms/flow/FordFulkerson.java && java algorithms.flow.FordFulkerson
 
 # Edmonds-Karp Max Flow & Min Cut Set
-javac algorithms/flow/EdmondsKarp.java && java -cp algorithms/flow EdmondsKarp
+javac algorithms/flow/EdmondsKarp.java && java algorithms.flow.EdmondsKarp
 ```

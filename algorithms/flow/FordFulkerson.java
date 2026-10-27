@@ -1,3 +1,5 @@
+package algorithms.flow;
+
 import java.util.*;
 
 public class FordFulkerson {
