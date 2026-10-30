@@ -126,3 +126,4 @@ public class MinCut {
         findMinCut(capacity, 0, 2);
     }
 }
+
