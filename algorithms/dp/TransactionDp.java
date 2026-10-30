@@ -5,7 +5,8 @@ import java.util.*;
 /**
  * DP Transitions / Transaction DP
  * 
- * Demonstrates 1D Dynamic Programming state transitions on a numeric string "11231".
+ * Demonstrates 1D Dynamic Programming state transitions on a numeric string
+ * "11231".
  * Tracks state changes / transitions between consecutive elements:
  * - dp[i] stores the cumulative count of transitions up to index i.
  * - If num[i] != num[i-1], a state transition occurs (dp[i] = dp[i-1] + 1).
@@ -14,7 +15,7 @@ import java.util.*;
  * Time Complexity: O(N)
  * Space Complexity: O(N)
  */
-public class TransectionDp {
+public class TransactionDp {
 
     public static void main(String[] args) {
 
@@ -39,4 +40,3 @@ public class TransectionDp {
         System.out.println("Total transitions across string: " + dp[n - 1]);
     }
 }
-
