@@ -1,7 +1,7 @@
 # DSA 3: Advanced Data Structures and Algorithms
 
-This repository contains implementations, technical reports, and explanatory guides for all 17 algorithms covered in DSA 3.  
-Topics include Strongly Connected Components (SCC), Network Flow and Minimum Cut, Dynamic Programming, and Advanced String Processing.
+This repository contains implementations, technical reports, and explanatory guides for all algorithms covered in DSA 3.  
+Topics include Strongly Connected Components (SCC), Network Flow and Minimum Cut, Dynamic Programming, Advanced String Processing, and Tree & Range Query Data Structures.
 
 ---
 
@@ -22,15 +22,18 @@ DSA3/
 │   │   ├── subset.java               # 7. Subset DP
 │   │   ├── TreeDp.java               # 8. Tree DP (Subtree Size Calculation)
 │   │   └── TransactionDp.java        # 9. DP State Transitions (Transaction DP)
-│   └── strings/                       # Advanced String Processing
-│       ├── SuffixArray.java          # 10. SA Construction Basics & 11. SA Coding (Doubling)
-│       ├── KasaiAlgorithm.java       # 12. Kasai's LCP Construction
-│       ├── MultiPatternMatching.java # 13. Multi-Pattern Matching (Generalized Delimiters)
-│       ├── TrieDemo.java             # 14. Trie Algorithm (Insert, Search, Prefix)
-│       ├── AhoCorasick.java          # 15. Fail-Link Algorithm (Aho-Corasick Automaton)
-│       ├── LPSDemo.java              # 16a. Coding LPS (Longest Prefix Suffix)
-│       ├── KMPSearch.java            # 16b. KMP Pattern Search
-│       └── Manacher.java             # 17. Manacher's O(N) Palindromic Substring
+│   ├── strings/                       # Advanced String Processing
+│   │   ├── SuffixArray.java          # 10. SA Construction Basics & 11. SA Coding (Doubling)
+│   │   ├── KasaiAlgorithm.java       # 12. Kasai's LCP Construction
+│   │   ├── MultiPatternMatching.java # 13. Multi-Pattern Matching (Generalized Delimiters)
+│   │   ├── TrieDemo.java             # 14a. Array-based Trie Demo
+│   │   ├── Trie.java                 # 14b. HashMap-based Trie (Word Storage & Autocomplete)
+│   │   ├── AhoCorasick.java          # 15. Fail-Link Algorithm (Aho-Corasick Automaton)
+│   │   ├── LPSDemo.java              # 16a. Coding LPS (Longest Prefix Suffix)
+│   │   ├── KMPSearch.java            # 16b. KMP Pattern Search
+│   │   └── Manacher.java             # 17. Manacher's O(N) Palindromic Substring
+│   └── trees/                         # Tree & Range Query Data Structures
+│       └── SegmentTree.java          # 18. Segment Tree with Lazy Propagation
 ├── docs/                              # Technical Reports and Guides
 │   ├── Edmonds_Karp_and_Min_Cut_Explained.md
 │   ├── Ford_Fulkerson_Algorithm_Explained.md
@@ -46,7 +49,7 @@ DSA3/
 
 ---
 
-## 2. Complete Inventory of Covered Algorithms (17 Total)
+## 2. Complete Inventory of Covered Algorithms
 
 ### A. Strongly Connected Components (`algorithms/scc/`)
 
@@ -86,10 +89,18 @@ DSA3/
 | **11** | **SA Coding (Prefix Doubling)** | [`SuffixArray.java`](file:///Users/manthan/Desktop/DSA3/algorithms/strings/SuffixArray.java) | Rank-pair doubling over prefixes of length $2^k$ | $\mathcal{O}(N \log^2 N)$ | $\mathcal{O}(N)$ |
 | **12** | **Kasai's Algorithm** | [`KasaiAlgorithm.java`](file:///Users/manthan/Desktop/DSA3/algorithms/strings/KasaiAlgorithm.java) | Linear-time LCP construction using rank inversion ($LCP \ge h - 1$) | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ |
 | **13** | **Multi-Pattern Matching** | [`MultiPatternMatching.java`](file:///Users/manthan/Desktop/DSA3/algorithms/strings/MultiPatternMatching.java) | Generalized delimited string indexing (`text#pat1$0pat2$1...`) | $\mathcal{O}(N + \sum M_i)$ | $\mathcal{O}(N + \sum M_i)$ |
-| **14** | **Trie Algorithm** | [`TrieDemo.java`](file:///Users/manthan/Desktop/DSA3/algorithms/strings/TrieDemo.java) | 26-way prefix tree with `insert`, `search`, and `startsWith` | $\mathcal{O}(L)$ per word | $\mathcal{O}(\Sigma \cdot \sum L)$ |
+| **14** | **Trie (Word Storage & Search)** | [`Trie.java`](file:///Users/manthan/Desktop/DSA3/algorithms/strings/Trie.java) | Dynamic HashMap-based Trie supporting arbitrary characters & prefixes | $\mathcal{O}(L)$ per word | $\mathcal{O}(\text{Nodes})$ |
 | **15** | **Fail-Link Algorithm (Aho-Corasick)** | [`AhoCorasick.java`](file:///Users/manthan/Desktop/DSA3/algorithms/strings/AhoCorasick.java) | Trie combined with BFS failure transitions for multi-pattern search | $\mathcal{O}(N + \sum M_i + K)$ | $\mathcal{O}(\Sigma \cdot \sum M_i)$ |
 | **16** | **Coding LPS / KMP Search** | [`LPSDemo.java`](file:///Users/manthan/Desktop/DSA3/algorithms/strings/LPSDemo.java) / [`KMPSearch.java`](file:///Users/manthan/Desktop/DSA3/algorithms/strings/KMPSearch.java) | Longest proper prefix which is also suffix / linear pattern search | $\mathcal{O}(N + M)$ | $\mathcal{O}(M)$ |
 | **17** | **Manacher's Algorithm** | [`Manacher.java`](file:///Users/manthan/Desktop/DSA3/algorithms/strings/Manacher.java) | `#`-padded palindrome radius tracking with center/boundary symmetry | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ |
+
+---
+
+### E. Tree & Range Query Data Structures (`algorithms/trees/`)
+
+| # | Algorithm / Data Structure | File | Core Concept / Technique | Time | Space |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| **18** | **Segment Tree (Lazy Propagation)** | [`SegmentTree.java`](file:///Users/manthan/Desktop/DSA3/algorithms/trees/SegmentTree.java) | Recursive binary tree with lazy push-down for range sum and updates | $\mathcal{O}(\log N)$ per query/update | $\mathcal{O}(4N)$ |
 
 ---
 
@@ -107,6 +118,12 @@ DSA3/
 Compile and execute any algorithm from the repository root:
 
 ```bash
+# Tree & Range Query Data Structures
+javac algorithms/trees/*.java && java algorithms.trees.SegmentTree
+
+# String Processing & Word Storage Trie
+javac algorithms/strings/*.java && java algorithms.strings.Trie
+
 # Strongly Connected Components
 javac algorithms/scc/*.java && java algorithms.scc.KosarajusAlgo
 
@@ -115,7 +132,4 @@ javac algorithms/flow/*.java && java algorithms.flow.MinCut
 
 # Dynamic Programming
 javac algorithms/dp/*.java && java algorithms.dp.TreeDp
-
-# String Processing
-javac algorithms/strings/*.java && java algorithms.strings.Manacher
 ```
