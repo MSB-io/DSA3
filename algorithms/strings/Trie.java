@@ -157,3 +157,4 @@ public class Trie {
         System.out.println("Words with 'ap': " + trie.getWordsWithPrefix("ap")); // ["apt", "apple", "application"]
     }
 }
+

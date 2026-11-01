@@ -152,3 +152,4 @@ public class SegmentTree {
         System.out.println("Sum of index [4..4]: " + segTree.queryRange(4, 4));              // 19
     }
 }
+
