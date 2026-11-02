@@ -124,3 +124,4 @@ public class BinaryIndexedTree {
         System.out.println("Range Sum  [3..7] after update: " + bit.queryRange(3, 7)); // Expected: 16
     }
 }
+

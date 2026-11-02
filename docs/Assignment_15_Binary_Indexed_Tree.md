@@ -179,3 +179,4 @@ For array values: `[3, 2, -1, 6, 5, 4, -3, 3, 7, 2]` ($N = 10$):
 | **Prefix Query Time** | $\mathcal{O}(\log N)$ | Subtracts LSB at each step. At most $\lceil \log_2 N \rceil$ hops to reach $0$. |
 | **Range Query Time** | $\mathcal{O}(\log N)$ | Two prefix queries executed in sequence: $\mathcal{O}(\log N) + \mathcal{O}(\log N) = \mathcal{O}(\log N)$. |
 | **Space Complexity** | $\mathcal{O}(N)$ | Requires an array of exactly $N + 1$ integers (compared to $4N$ for Segment Trees). |
+
