@@ -34,15 +34,23 @@ DSA3/
 │   │   └── Manacher.java             # 17. Manacher's O(N) Palindromic Substring
 │   └── trees/                         # Tree & Range Query Data Structures
 │       └── SegmentTree.java          # 18. Segment Tree with Lazy Propagation
-├── docs/                              # Technical Reports and Guides
-│   ├── Edmonds_Karp_and_Min_Cut_Explained.md
-│   ├── Ford_Fulkerson_Algorithm_Explained.md
-│   ├── Kosarajus_Algorithm_Explained.md
-│   ├── Tarjans_Algorithm_Explained.md
-│   ├── Edmonds-Karp and Min-Cut Technical Report.pdf
-│   ├── Ford-Fulkerson Algorithm Technical Report.pdf
-│   ├── Kosaraju's Algorithm Technical Report.pdf
-│   └── Tarjan's Algorithm Technical Report.pdf
+├── docs/                              # Standardized Assignment Guides & Reports
+│   ├── Assignment_01_Kosarajus_Algorithm.md
+│   ├── Assignment_02_Tarjans_Algorithm.md
+│   ├── Assignment_03_Ford_Fulkerson_Algorithm.md
+│   ├── Assignment_04_Edmonds_Karp_and_Min_Cut.md
+│   ├── Assignment_05_Bitwise_Representation_Power_Set.md
+│   ├── Assignment_06_Subset_DP.md
+│   ├── Assignment_07_Tree_DP.md
+│   ├── Assignment_08_Transaction_DP.md
+│   ├── Assignment_09_Suffix_Array_Construction.md
+│   ├── Assignment_10_Kasais_Algorithm_LCP.md
+│   ├── Assignment_11_Multi_Pattern_Matching.md
+│   ├── Assignment_12_Trie_Word_Storage_and_Search.md
+│   ├── Assignment_13_Aho_Corasick_Algorithm.md
+│   ├── Assignment_14_KMP_Pattern_Matching.md
+│   ├── Assignment_15_Manachers_Algorithm.md
+│   └── Assignment_16_Segment_Tree_Lazy_Propagation.md
 ├── .gitignore                         # Git exclusion rules
 └── README.md                          # Repository documentation
 ```
@@ -104,12 +112,28 @@ DSA3/
 
 ---
 
-## 3. Technical Documentation (`docs/`)
+## 3. Standardized Assignment Reports (`docs/`)
 
-* **[`Kosarajus_Algorithm_Explained.md`](file:///Users/manthan/Desktop/DSA3/docs/Kosarajus_Algorithm_Explained.md):** Complete guide for the two-pass Kosaraju algorithm.
-* **[`Tarjans_Algorithm_Explained.md`](file:///Users/manthan/Desktop/DSA3/docs/Tarjans_Algorithm_Explained.md):** Complete guide for the single-pass Tarjan algorithm.
-* **[`Ford_Fulkerson_Algorithm_Explained.md`](file:///Users/manthan/Desktop/DSA3/docs/Ford_Fulkerson_Algorithm_Explained.md):** Complete guide for network flow and residual graph updates.
-* **[`Edmonds_Karp_and_Min_Cut_Explained.md`](file:///Users/manthan/Desktop/DSA3/docs/Edmonds_Karp_and_Min_Cut_Explained.md):** Complete guide for the Max-Flow Min-Cut Theorem and cut-set extraction.
+All 16 technical specification reports follow the standard format (Definition, Mermaid diagrams, Procedure, Code Walkthrough, Execution Trace, Complexity proofs, and Viva Q&A):
+
+| Assignment # | Topic & Algorithm | Documentation Guide |
+| :---: | :--- | :--- |
+| **01** | Kosaraju's Algorithm (SCC) | [`Assignment_01_Kosarajus_Algorithm.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_01_Kosarajus_Algorithm.md) |
+| **02** | Tarjan's Algorithm (SCC) | [`Assignment_02_Tarjans_Algorithm.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_02_Tarjans_Algorithm.md) |
+| **03** | Ford-Fulkerson Algorithm (Max Flow) | [`Assignment_03_Ford_Fulkerson_Algorithm.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_03_Ford_Fulkerson_Algorithm.md) |
+| **04** | Edmonds-Karp & Min-Cut Algorithm | [`Assignment_04_Edmonds_Karp_and_Min_Cut.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_04_Edmonds_Karp_and_Min_Cut.md) |
+| **05** | Bitwise Representation (Power Set) | [`Assignment_05_Bitwise_Representation_Power_Set.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_05_Bitwise_Representation_Power_Set.md) |
+| **06** | Subset Dynamic Programming | [`Assignment_06_Subset_DP.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_06_Subset_DP.md) |
+| **07** | Tree Dynamic Programming | [`Assignment_07_Tree_DP.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_07_Tree_DP.md) |
+| **08** | Transaction Dynamic Programming | [`Assignment_08_Transaction_DP.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_08_Transaction_DP.md) |
+| **09** | Suffix Array Construction | [`Assignment_09_Suffix_Array_Construction.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_09_Suffix_Array_Construction.md) |
+| **10** | Kasai's Algorithm (LCP Construction) | [`Assignment_10_Kasais_Algorithm_LCP.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_10_Kasais_Algorithm_LCP.md) |
+| **11** | Multi-Pattern Matching with Delimiters | [`Assignment_11_Multi_Pattern_Matching.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_11_Multi_Pattern_Matching.md) |
+| **12** | Trie: Word Storage and Autocomplete | [`Assignment_12_Trie_Word_Storage_and_Search.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_12_Trie_Word_Storage_and_Search.md) |
+| **13** | Aho-Corasick Algorithm (Fail-Link) | [`Assignment_13_Aho_Corasick_Algorithm.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_13_Aho_Corasick_Algorithm.md) |
+| **14** | KMP Pattern Matching & LPS Array | [`Assignment_14_KMP_Pattern_Matching.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_14_KMP_Pattern_Matching.md) |
+| **15** | Manacher's Algorithm ($\mathcal{O}(N)$ Palindrome) | [`Assignment_15_Manachers_Algorithm.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_15_Manachers_Algorithm.md) |
+| **16** | Segment Tree with Lazy Propagation | [`Assignment_16_Segment_Tree_Lazy_Propagation.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_16_Segment_Tree_Lazy_Propagation.md) |
 
 ---
 
