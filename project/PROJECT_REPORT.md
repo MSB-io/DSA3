@@ -1,56 +1,59 @@
-# Internal Mini-Project: Trie-Based Dictionary and Autocomplete Engine
+# Internal Mini-Project: Trie-Based Dictionary and Autocomplete
 
 **Course:** Data Structures & Algorithms III (DSA 3)  
 **Project Number:** Project 15 (from 30 Internal Project Titles)  
-**Implementation Language:** Java (Standard Library)  
-**Deliverable File:** [`project/TrieDictionary.java`](file:///Users/manthan/Desktop/DSA3/project/TrieDictionary.java)
+**Language:** Java  
+**Code File:** [`project/TrieDictionary.java`](file:///Users/manthan/Desktop/DSA3/project/TrieDictionary.java)
 
 ---
 
-## 1. Problem Statement & Motivation
+## 1. Problem Statement
 
-In modern computing systems, text retrieval, auto-suggestions, and vocabulary lookup form the backbone of search bars (Google, Spotlight), text editors (IDE IntelliSense), and mobile keyboards.
+When you type in a search engine like Google or use your phone's keyboard, you see suggestions before you finish typing. This is called **autocomplete**.
 
-### The Technical Limitation of Traditional Data Structures
-1. **Unsorted / Sorted Arrays:** Searching for words with a prefix requires binary search or linear scans. Inserting or deleting elements takes $\mathcal{O}(N)$ shifts.
-2. **Hash Tables (HashMaps / HashSets):** While a HashMap provides average $\mathcal{O}(L)$ exact lookup, it **cannot perform prefix lookups or autocomplete**. To find words starting with prefix `"ap"`, a hash table must scan every single stored key ($N$ keys) and test if `key.startsWith("ap")`, degrading prefix search to an unscalable $\mathcal{O}(N \cdot L)$ operation.
-3. **Redundant Memory Allocation:** Storing words like `"apple"`, `"application"`, and `"app"` in a hash table duplicates the shared prefix `"app"` three separate times in memory.
+### Why Not Use a Normal List or HashMap?
+- **List / Array:** Searching through a big list of words one by one is very slow.
+- **HashMap:** A HashMap is fast for finding an exact word, but it **cannot do prefix search**. To find words starting with `"ap"`, a HashMap has to look through every single word in the entire database.
+- **Wasted Memory:** If we store `"app"`, `"apple"`, and `"application"` separately, the letters `"app"` are repeated in memory three times.
 
-### The Solution: The Trie Data Structure
-A **Trie (Prefix Tree)** organizes strings hierarchically by character. Words sharing common prefixes share the exact same branch of nodes. Prefix queries and autocomplete suggestions run in $\mathcal{O}(P + K)$ time (where $P$ is prefix length and $K$ is total characters of matching words), completely independent of the total number of words $N$ in the dictionary.
-
----
-
-## 2. Project Objectives
-
-1. **Word Storage & Retrieval:** Store technical terms alongside their definitions with constant-depth search complexity.
-2. **Dynamic Prefix Autocomplete:** Instantaneously return all words beginning with an arbitrary user-entered prefix in alphabetical order.
-3. **Safe Memory-Pruned Deletion:** Unmark deleted words while ensuring common prefix branches of longer words (e.g. deleting `"app"` without destroying `"apple"`) remain fully intact.
-4. **Interactive Demonstration CLI & Automated Testing:** Provide a clean command-line interface and an automated evaluation suite covering standard, boundary, and edge cases.
+### The Solution: A Trie (Prefix Tree)
+A **Trie** is a tree where each node stores a single letter. Words that share the same starting letters share the same branch. 
+- For example, `"app"`, `"apple"`, and `"apt"` all share the root letters `'a'` and `'p'`.
+- This makes searching and autocomplete extremely fast, because the program only looks at the letters you typed, not the entire dictionary.
 
 ---
 
-## 3. System Architecture & Node Design
+## 2. Project Goals
 
-Each node in the Trie represents a single character along a prefix path.
+1. **Add Words:** Add words along with their short definitions.
+2. **Search Words:** Look up a word to get its meaning in quick time.
+3. **Autocomplete:** Type a prefix like `"ap"` and get all words starting with those letters.
+4. **Delete Words Safely:** Remove a word without breaking other words (e.g., deleting `"app"` should not delete `"apple"`).
+5. **Testing:** Run automated test cases showing normal search, autocomplete, deletion, and edge cases.
+
+---
+
+## 3. How the Trie is Structured
+
+Here is a simple picture of how words are stored in the tree:
 
 ```mermaid
 flowchart TD
-    Root["Root (empty anchor)"]
+    Root["Root (empty)"]
 
     A["'a'"]
     P1["'p'"]
-    P2["'p'<br/>[Word: 'app']<br/>Def: Mobile application"]
+    P2["'p'<br/>(Word: 'app')<br/>Meaning: Mobile application"]
     L["'l'"]
-    E["'e'<br/>[Word: 'apple']<br/>Def: Edible fruit"]
-    T["'t'<br/>[Word: 'apt']<br/>Def: Suitable"]
+    E["'e'<br/>(Word: 'apple')<br/>Meaning: Edible fruit"]
+    T["'t'<br/>(Word: 'apt')<br/>Meaning: Suitable"]
 
     B["'b'"]
     AN["'a'"]
     N1["'n'"]
     AN2["'a'"]
     N2["'n'"]
-    A_END["'a'<br/>[Word: 'banana']<br/>Def: Yellow fruit"]
+    A_END["'a'<br/>(Word: 'banana')<br/>Meaning: Yellow fruit"]
 
     Root --> A
     Root --> B
@@ -76,7 +79,8 @@ flowchart TD
     class P2,E,A_END term;
 ```
 
-### Node Anatomy (`TrieNode`)
+### The Node Design (`TrieNode`)
+Each box in the tree has three simple parts:
 ```java
 static class TrieNode {
     Map<Character, TrieNode> children = new TreeMap<>();
@@ -84,123 +88,95 @@ static class TrieNode {
     String definition = null;
 }
 ```
-* **`children`**: A `TreeMap<Character, TrieNode>` dynamically allocates memory only for characters that actually exist and guarantees alphabetical ordering of autocomplete results.
-* **`isEndOfWord`**: A boolean flag differentiating full words from intermediate prefixes.
-* **`definition`**: A `String` containing the dictionary meaning, saved only at terminal nodes.
+1. **`children`**: Stores links to the next letters (uses `TreeMap` so words come out sorted in A-to-Z order).
+2. **`isEndOfWord`**: A flag set to `true` if a full word ends at this letter.
+3. **`definition`**: The meaning of the word (saved at the last letter).
 
 ---
 
-## 4. Core Algorithms & Working Principles
+## 4. How the Code Works
 
-### A. Word Insertion (`insert(word, definition)`)
-1. Normalize the input word to lowercase and trim whitespace.
-2. Initialize pointer `current = root`.
-3. For each character `ch` in `word`:
-   * If `current.children` does not contain `ch`, create a new `TrieNode`.
-   * Advance `current = current.children.get(ch)`.
-4. At the terminal node, set `current.isEndOfWord = true` and `current.definition = definition`.
+### A. Inserting a Word (`insert`)
+1. Start at the root node.
+2. Look at each letter of the word one by one.
+3. If the letter is not in the tree yet, create a new node for it.
+4. Move down to that child node.
+5. At the final letter, set `isEndOfWord = true` and save the definition.
 
-### B. Word Search (`search(word)`)
-1. Follow the character path from `root`.
-2. If any character along the path does not exist, return `null` immediately.
-3. If the path completes, check if `current.isEndOfWord == true`. If true, return `current.definition`; otherwise return `null` (the query was merely a prefix, not a complete word).
+### B. Searching for a Word (`search`)
+1. Start at the root node.
+2. Follow the letters of the word down the branches.
+3. If any letter is missing, the word does not exist $\rightarrow$ return `null`.
+4. If all letters exist, check if `isEndOfWord` is `true`.
+   - If true, return the definition.
+   - If false, it means we only found a prefix (e.g., searching for `"appl"` when only `"apple"` exists), so return `null`.
 
-### C. Autocomplete (`autocomplete(prefix)`)
-1. Traverse down the Trie matching the characters of `prefix`.
-2. If the prefix path breaks, return an empty list.
-3. Once at the prefix node, perform a post-order / Depth-First Search (DFS) traversal collecting all descendant paths that have `isEndOfWord == true`.
+### C. Autocomplete (`autocomplete`)
+1. Walk down the tree to the end of the given prefix (e.g., `'a'` then `'p'`).
+2. If the prefix doesn't exist, return an empty list.
+3. From that prefix node, use a simple search (DFS) to visit all letters below it and collect every word that has `isEndOfWord == true`.
 
-```mermaid
-flowchart TD
-    Start["User Types Prefix (e.g. 'ap')"] --> Nav["Step down Trie to node of last prefix character"]
-    Nav --> Exists{"Prefix Path Exists?"}
-    Exists -- No --> Empty["Return Empty List []"]
-    Exists -- Yes --> DFS["Launch collectWordsDfs(node)"]
-    DFS --> CheckWord{"node.isEndOfWord == true ?"}
-    CheckWord -- Yes --> Add["Add current word to suggestions list"]
-    CheckWord -- No --> ExploreChildren
-    Add --> ExploreChildren["Recursively explore each child branch in alphabetical order"]
-    ExploreChildren --> Backtrack["Backtrack character from StringBuilder"]
-    Backtrack --> Done["Return Complete Suggestions List"]
-
-    classDef step fill:#f8fafc,stroke:#475569,stroke-width:2px,color:#0f172a;
-    class Start,Nav,Empty,DFS,CheckWord,Add,ExploreChildren,Backtrack,Done step;
-```
-
-### D. Safe Deletion with Memory Pruning (`delete(word)`)
-1. Recursively walk to the terminal node of `word`.
-2. If the node is found, set `isEndOfWord = false` and clear `definition`.
-3. During backtracking, if a node has no other children and is no longer marked as an end of word, remove it from the parent's `children` map to free unused memory.
+### D. Deleting a Word (`delete`)
+1. Find the word in the tree.
+2. Set its `isEndOfWord = false` so it is no longer considered a word.
+3. If that node has no other letters branching off it, remove it to keep the tree clean.
 
 ---
 
-## 5. Technical Complexity Analysis
+## 5. Time and Space Complexity
 
-| Operation | Time Complexity | Auxiliary Space | Technical Justification |
+| Operation | Time Taken | Memory Used | Simple Explanation |
 | :--- | :---: | :---: | :--- |
-| **Insertion** | $\mathcal{O}(L)$ | $\mathcal{O}(L)$ | Traverses $L$ characters; allocates at most $L$ new nodes for unique suffixes. |
-| **Exact Search** | $\mathcal{O}(L)$ | $\mathcal{O}(1)$ | Performs at most $L$ tree transitions without extra memory allocation. |
-| **Autocomplete** | $\mathcal{O}(P + K)$ | $\mathcal{O}(P + K)$ | Traverses $P$ characters to reach prefix node; then explores $K$ characters across matching words. |
-| **Deletion** | $\mathcal{O}(L)$ | $\mathcal{O}(L)$ | Recursion stack depth equals $L$; prunes orphan nodes during backtracking. |
+| **Insert** | $\mathcal{O}(L)$ | $\mathcal{O}(L)$ | Only takes steps equal to the word length ($L$). |
+| **Search** | $\mathcal{O}(L)$ | $\mathcal{O}(1)$ | Only checks the letters in the word ($L$). Very fast. |
+| **Autocomplete** | $\mathcal{O}(P + K)$ | $\mathcal{O}(P + K)$ | Walks the prefix ($P$), then visits the matching words ($K$). |
+| **Delete** | $\mathcal{O}(L)$ | $\mathcal{O}(L)$ | Finds the word and unmarks it in $L$ steps. |
 
-*(where $L$ = length of the word, $P$ = length of the prefix, and $K$ = total characters in all matching suggestions).*
+*(Note: $L$ is the length of the word, $P$ is the prefix length, and $K$ is the length of matched suggestions).*
 
 ---
 
-## 6. Testing, Test Cases & Edge Cases
+## 6. Test Cases & Results
 
-The application includes an automated test harness validating all functionality on startup:
+The project runs 4 automated test cases to prove everything works:
 
-```
-============================================================
-        RUNNING MANDATORY RUBRIC TEST SUITE
-============================================================
-```
+### Test Case 1: Exact Word Search
+* **Input words added:** `"apple"`, `"app"`, `"application"`, `"apt"`, `"banana"`.
+* **Search `"apple"`:** Found $\rightarrow$ prints definition.
+* **Search `"app"`:** Found $\rightarrow$ prints definition.
+* **Search `"appl"`:** Returns `null` (correctly detects that `"appl"` is just a prefix, not a full word).
 
-### Test Case 1: Standard Insertion and Exact Lookup
-* **Input:** Insert `"apple"`, `"app"`, `"application"`, `"apt"`, `"banana"`.
-* **Queries:**
-  - Search `"apple"` $\to$ Returns definition: *"A sweet red or green edible fruit."*
-  - Search `"app"` $\to$ Returns definition: *"A software application for mobile or desktop."*
-  - Search `"appl"` $\to$ Returns `null` (correctly verifies that prefixes without terminal markers are rejected).
-* **Validation:** Passed ($\checkmark$).
+### Test Case 2: Autocomplete
+* **Prefix entered:** `"ap"`
+* **Output:** `[app, apple, application, apt]` (all 4 words starting with `"ap"`, sorted alphabetically).
 
-### Test Case 2: Autocomplete Prefix Search
-* **Input Prefix:** `"ap"`
-* **Expected Output:** `["app", "apple", "application", "apt"]` (returned in alphabetical order).
-* **Validation:** Passed ($\checkmark$).
-
-### Test Case 3: Boundary Protection during Deletion
-* **Operation:** `delete("app")`
-* **Queries:**
-  - Search `"app"` $\to$ Returns `null` (successfully deleted).
-  - Search `"apple"` $\to$ Returns *"A sweet red or green edible fruit."* (child branch preserved without corruption).
-  - Autocomplete for `"ap"` $\to$ Returns `["apple", "application", "apt"]`.
-* **Validation:** Passed ($\checkmark$).
+### Test Case 3: Safe Deletion
+* **Action:** Delete the word `"app"`.
+* **Search `"app"` after deletion:** Returns `null` (successfully removed).
+* **Search `"apple"` after deletion:** Still found (proves child words are not accidentally deleted).
+* **Autocomplete for `"ap"`:** Returns `[apple, application, apt]`.
 
 ### Test Case 4: Edge Cases
-* **Edge Case 4A (Empty String Query):** `search("")` returns `null` safely without exception.
-* **Edge Case 4B (Non-Existent Prefix):** `autocomplete("xyz")` returns empty list `[]` without null-pointer crashes.
-* **Edge Case 4C (Mixed Case Insensitivity):** `search("BaNaNa")` correctly maps to lowercase and retrieves the definition.
-* **Edge Case 4D (Single-Letter Prefix):** `autocomplete("b")` returns `["banana"]`.
-* **Validation:** Passed ($\checkmark$).
+* **Empty string search `""`:** Handled safely, returns `null` without crashing.
+* **Non-existent prefix `"xyz"`:** Returns `[]` without error.
+* **Case insensitivity `"BaNaNa"`:** Automatically converts to lowercase and finds the word.
 
 ---
 
-## 7. How to Compile and Run the Demonstration
+## 7. How to Compile and Run
 
-From the root directory of the repository:
+From the root project directory:
 
 ```bash
-# Compile the project
+# 1. Compile the Java file
 javac project/TrieDictionary.java
 
-# Run the project demonstration
+# 2. Run the program
 java project.TrieDictionary
 ```
 
-### Sample Console Execution Output
-```
+### Output Screen:
+```text
 =================================================
    TRIE DICTIONARY & AUTOCOMPLETE DEMONSTRATION  
 =================================================
@@ -224,4 +200,3 @@ java project.TrieDictionary
  - Case-insensitive lookup: A long yellow fruit.
 =================================================
 ```
-
