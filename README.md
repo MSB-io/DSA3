@@ -51,6 +51,9 @@ DSA3/
 │   ├── Assignment_14_KMP_Pattern_Matching.md
 │   ├── Assignment_15_Manachers_Algorithm.md
 │   └── Assignment_16_Segment_Tree_Lazy_Propagation.md
+├── project/                           # Internal Mini-Project (Project 15)
+│   ├── TrieDictionary.java           # Self-contained Trie Dictionary & Autocomplete CLI
+│   └── PROJECT_REPORT.md             # Formal Project Specification Report & Rubric Tests
 ├── .gitignore                         # Git exclusion rules
 └── README.md                          # Repository documentation
 ```
@@ -137,9 +140,28 @@ All 16 technical specification reports follow the standard format (Definition, M
 
 ---
 
-## 4. Compilation and Execution
+## 4. Internal Mini-Project (`project/`)
 
-Compile and execute any algorithm from the repository root:
+**Selected Topic:** Project 15 — *Trie-Based Dictionary and Autocomplete*
+
+| Deliverable | File | Description |
+| :--- | :--- | :--- |
+| **Source Code** | [`TrieDictionary.java`](file:///Users/manthan/Desktop/DSA3/project/TrieDictionary.java) | Single self-contained runnable application featuring dynamic `TreeMap` child mapping, insertion, exact definition retrieval, prefix autocomplete, safe memory-pruned deletion, and automated test suite. |
+| **Technical Report** | [`PROJECT_REPORT.md`](file:///Users/manthan/Desktop/DSA3/project/PROJECT_REPORT.md) | Complete specification document containing problem statement, objectives, Mermaid architecture diagrams, $\mathcal{O}(L)$ complexity proofs, rubric test validation, and viva defense cheat sheet. |
+
+---
+
+## 5. Compilation and Execution
+
+Compile and execute any component from the repository root:
+
+### Internal Mini-Project (Project 15)
+```bash
+# Compile and run the Trie Dictionary & Autocomplete CLI
+javac project/TrieDictionary.java && java project.TrieDictionary
+```
+
+### Course Algorithms
 
 ```bash
 # Tree & Range Query Data Structures
