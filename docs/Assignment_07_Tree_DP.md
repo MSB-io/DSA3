@@ -151,16 +151,3 @@ For the 5-node tree rooted at node 1 with edges $(1,2), (1,3), (2,4), (2,5)$:
 | :--- | :--- | :--- |
 | **Time Complexity** | $\mathcal{O}(V + E) = \mathcal{O}(N)$ | In a tree, $E = N - 1$. Each vertex is visited once and each edge is traversed twice (forward and backtrack). |
 | **Space Complexity** | $\mathcal{O}(N)$ | Adjacency list requires $\mathcal{O}(N)$ space; recursion call stack takes $\mathcal{O}(H)$ where $H$ is tree height ($H \le N$). |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: Why do we pass the `parent` parameter in DFS?**  
-  **Answer:** In an undirected tree, passing the parent prevents the traversal from bouncing back to the predecessor node, eliminating the need for a separate boolean `visited[]` array.
-
-* **Question: What is Tree Rerooting DP?**  
-  **Answer:** Tree rerooting computes answers for all possible roots in $\mathcal{O}(N)$ time. It runs a first pass to compute answers for root $1$, followed by a second pass shifting the root to adjacent nodes in $\mathcal{O}(1)$ per transition.
-
-* **Question: What classic problems rely on Tree DP?**  
-  **Answer:** Tree Diameter, Maximum Independent Set on Trees, Binary Tree Cameras (LeetCode 968), and Sum of Distances in Tree (LeetCode 834).

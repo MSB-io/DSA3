@@ -137,13 +137,3 @@ Searching `pattern = "ABABCABAB"` in `text = "ABABDABACDABABCABAB"`:
 | **Search Time** | $\mathcal{O}(N)$ | Text pointer $i$ strictly increases from $0$ to $N$. Pattern pointer $j$ backtracks at most $N$ times. |
 | **Total Time Complexity** | $\mathcal{O}(N + M)$ | Linear in the combined lengths of text and pattern. |
 | **Space Complexity** | $\mathcal{O}(M)$ | Requires an integer array of size $M$ for the LPS table. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: Why is text backtracking avoided in KMP?**  
-  **Answer:** In naive matching, $i$ resets backward after a mismatch. KMP guarantees that text pointer $i$ never decrements because the LPS table tells us the exact shift offset where the next possible match can begin.
-
-* **Question: What happens if `lps[len - 1]` is used on mismatch?**  
-  **Answer:** It jumps to the next shorter candidate prefix that could match the suffix up to the mismatch point, identical to dynamic programming state transitions.

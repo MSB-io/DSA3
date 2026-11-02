@@ -171,16 +171,3 @@ Given $N = 3$ elements ($0, 1, 2$):
 | :--- | :--- | :--- |
 | **Time Complexity** | $\mathcal{O}(N \cdot 2^N)$ | The outer loop runs $2^N$ times. For each state, $N$ candidate transitions are tested. |
 | **Space Complexity** | $\mathcal{O}(2^N)$ | Requires a one-dimensional DP array of size $2^N$ to store state solutions. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: What practical problems use Subset DP?**  
-  **Answer:** The Traveling Salesperson Problem (TSP), Job Assignment Problems, and Minimum Weight Hamiltonian Path problems use Subset DP to achieve $\mathcal{O}(N^2 \cdot 2^N)$ runtime.
-
-* **Question: Why is this approach guaranteed to be topologically valid without recursion?**  
-  **Answer:** Any subset with $k$ bits set can only transition to a subset with $k + 1$ bits set. Because adding bits strictly increases the numeric integer value (`newMask > mask`), iterating `mask` in ascending order guarantees that subproblems are solved before they are referenced.
-
-* **Question: How does `mask | (1 << i)` set the $i$-th bit?**  
-  **Answer:** `1 << i` produces an integer with only the $i$-th bit as $1$. Bitwise OR (`|`) copies all existing $1$s from `mask` and sets the $i$-th bit to $1$.

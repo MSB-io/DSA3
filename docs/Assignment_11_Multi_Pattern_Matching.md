@@ -121,13 +121,3 @@ Given `text = "banana"` and `patterns = ["a", "ana", "anana", "banana", "na", "n
 | **String Assembly Time** | $\mathcal{O}(N + \sum_{i=1}^K M_i)$ | Each character of the text and all $K$ patterns is appended once. |
 | **Query Complexity** | $\mathcal{O}(M_i \log(N + \sum M_i))$ | Binary search over the generalized suffix array takes logarithmic time relative to the combined length. |
 | **Space Complexity** | $\mathcal{O}(N + \sum_{i=1}^K M_i)$ | The combined string stores all characters and delimiter tokens. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: Why do we need unique delimiters for each pattern instead of the same delimiter `#` everywhere?**  
-  **Answer:** Unique delimiters (like `$` followed by pattern ID) allow the algorithm to instantly identify which specific pattern created a match and guarantee that the end of one pattern cannot match the beginning of another.
-
-* **Question: What is the alternative to concatenated generalized strings for multi-pattern search?**  
-  **Answer:** The **Aho-Corasick Automaton**, which builds a Trie over all patterns and uses failure transitions to search the text in a single pass without altering the original text.

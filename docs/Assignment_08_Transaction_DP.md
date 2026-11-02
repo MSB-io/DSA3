@@ -112,13 +112,3 @@ For the input sequence `"11231"` ($n = 5$):
 | :--- | :--- | :--- |
 | **Time Complexity** | $\mathcal{O}(N)$ | A single linear loop executes $N - 1$ constant-time comparisons. |
 | **Space Complexity** | $\mathcal{O}(N)$ | Stored in an array of size $N$. (Can be optimized to $\mathcal{O}(1)$ space using a single accumulator variable). |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: How does this concept generalize to Buy/Sell Stock problems (e.g. Best Time to Buy and Sell Stock)?**  
-  **Answer:** In transaction DP for stocks, each transition represents changing state between *holding cash* and *holding stock*, subtracting transaction fees or transition costs at state boundary changes.
-
-* **Question: Can the space complexity be reduced?**  
-  **Answer:** Yes. Since `dp[i]` only depends on `dp[i - 1]`, we can replace the array with an `int transitions` accumulator, achieving $\mathcal{O}(1)$ space.

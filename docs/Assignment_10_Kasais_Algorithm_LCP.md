@@ -158,13 +158,3 @@ For the string `"banana"` ($N = 6$):
 | :--- | :--- | :--- |
 | **Time Complexity** | $\mathcal{O}(N)$ | The variable $h$ can increase at most $N$ times and decrease at most $N$ times across all iterations. Total comparisons $\le 2N$. |
 | **Space Complexity** | $\mathcal{O}(N)$ | Requires storage for the `rank` array of size $N$ and the `lcp` array of size $N$. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: Why can't naive LCP comparison achieve linear time?**  
-  **Answer:** Comparing adjacent suffixes naively takes $\mathcal{O}(N)$ per pair, leading to $\mathcal{O}(N^2)$ worst-case time (for example, on `"aaaaaa"`). Kasai avoids re-evaluating known matching prefixes using $h - 1$.
-
-* **Question: What practical problems are solved using LCP arrays?**  
-  **Answer:** Finding the Longest Repeated Substring in $\mathcal{O}(N)$ (the maximum value in the LCP array), counting total unique substrings ($\frac{N(N+1)}{2} - \sum \text{lcp}[i]$), and computing the Longest Common Substring of two or more texts.

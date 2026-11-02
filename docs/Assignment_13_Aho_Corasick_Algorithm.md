@@ -164,13 +164,3 @@ Searching text: `"ushers"`
 | **Fail Link Build Time** | $\mathcal{O}(\Sigma \cdot \sum |p_i|)$ | BFS visits every node and checks transition alphabet $\Sigma = 26$. |
 | **Text Search Time** | $\mathcal{O}(N + M_{\text{total}})$ | Linear in text length $N$ plus total number of reported occurrences $M_{\text{total}}$. |
 | **Space Complexity** | $\mathcal{O}(\Sigma \cdot \sum |p_i|)$ | Storage for trie node transitions and failure pointers. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: How does Aho-Corasick relate to KMP?**  
-  **Answer:** KMP constructs a failure table for a single pattern. Aho-Corasick is the generalization of KMP across an entire Trie of multiple patterns.
-
-* **Question: Where is Aho-Corasick used in production systems?**  
-  **Answer:** Intrusion detection systems (Snort), antivirus scanners (ClamAV) searching for signatures, and search engine dictionary filtering.

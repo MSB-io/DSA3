@@ -157,16 +157,3 @@ Given $S = \{\text{Maths}, \text{Physics}, \text{Chemistry}, \text{English}, \te
 | :--- | :--- | :--- |
 | **Time Complexity** | $\mathcal{O}(N \cdot 2^N)$ | The outer loop executes $2^N$ iterations. The inner loop evaluates $N$ bit positions per mask. |
 | **Space Complexity** | $\mathcal{O}(1)$ | Operates in-place using two scalar integer variables (`mask` and `i`). No recursive call stack or extra collections required. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: Why do we test `(mask & (1 << i)) != 0` instead of `== 1`?**  
-  **Answer:** The bitwise operation `mask & (1 << i)` evaluates to $2^i$, not $1$ (for example, when $i = 2$, it evaluates to $4$). Checking `!= 0` verifies that the bit is active regardless of its power-of-two magnitude.
-
-* **Question: Can we test bits using right shifts instead of left shifts?**  
-  **Answer:** Yes. The condition `((mask >> i) & 1) == 1` shifts the target bit to the least significant position and checks for equality with $1$.
-
-* **Question: What is the upper bound on $N$ for bitmasking with standard Java integers?**  
-  **Answer:** A standard Java `int` is a 32-bit signed integer, limiting practical masks to $N \le 30$. For $N \le 62$, a 64-bit `long` (`1L << i`) is used. For $N > 64$, `java.util.BitSet` or `BigInteger` must be used.

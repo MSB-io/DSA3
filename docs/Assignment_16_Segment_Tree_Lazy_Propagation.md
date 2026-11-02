@@ -136,13 +136,3 @@ For array `values = [1, 3, 5, 7, 9, 11]` ($N = 6$):
 | **Range Query Time** | $\mathcal{O}(\log N)$ | At each tree level, at most 4 nodes are visited. Tree height is $\lceil \log_2 N \rceil$. |
 | **Range Update Time** | $\mathcal{O}(\log N)$ | Lazy propagation prevents descending into fully covered subtrees. |
 | **Space Complexity** | $\mathcal{O}(4N)$ | A 1-based binary tree over $N$ leaves requires at most $4N$ array slots. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: What is the difference between Online Queries and Offline Queries?**  
-  **Answer:** Online queries must be answered immediately before reading the next query (e.g. when updates and queries are interleaved). Offline queries can all be collected in advance and sorted (e.g., by right boundary or using Mo's square-root decomposition algorithm) to optimize total processing time.
-
-* **Question: Why do we allocate $4N$ space for the tree array?**  
-  **Answer:** If $N$ is not an exact power of 2, the binary tree must be padded to the next power of 2 ($2^{\lceil \log_2 N \rceil + 1} \le 4N$) to prevent index out-of-bounds errors on child references $2 \cdot \text{node} + 1$.

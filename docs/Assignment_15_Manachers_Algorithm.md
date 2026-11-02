@@ -178,13 +178,3 @@ Testing `"babad"`:
 | :--- | :--- | :--- |
 | **Time Complexity** | $\mathcal{O}(N)$ | The right boundary $R$ advances from $0$ to $2N + 1$ and never decrements. Character comparisons only occur when extending $R$. Total comparisons $\le 2N$. |
 | **Space Complexity** | $\mathcal{O}(N)$ | The transformed string and the radius array $P[]$ require $2N + 1$ memory cells. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: Why do naive expand-around-center algorithms take $\mathcal{O}(N^2)$ time?**  
-  **Answer:** For repetitive strings like `"aaaaaa"`, naive expansion tests all characters from every center from scratch ($\frac{N^2}{2}$ checks). Manacher eliminates re-testing by copying the mirror's known radius.
-
-* **Question: How does `start = (centerIndex - maxLen) / 2` map back to the original string?**  
-  **Answer:** In the transformed string, every original character is at an odd index $2k + 1$. Subtracting the radius `maxLen` and dividing by $2$ accounts for the interleaved `#` delimiters, returning the exact 0-based starting index in the original string.

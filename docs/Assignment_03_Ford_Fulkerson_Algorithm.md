@@ -220,19 +220,3 @@ The graph in [`algorithms/flow/FordFulkerson.java`](file:///Users/manthan/Deskto
 | :--- | :--- | :--- |
 | **Time Complexity** | $\mathcal{O}(E \cdot \text{max flow})$ | Each DFS traversal takes $\mathcal{O}(E)$ time. In the worst case, each path augments flow by 1 unit. |
 | **Space Complexity** | $\mathcal{O}(V^2)$ | Requires an adjacency matrix of size $V \times V$ to store residual capacities. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: What is an augmenting path?**  
-  **Answer:** It is a directed path from source to sink in the residual graph where every edge has residual capacity greater than zero.
-
-* **Question: Why do we add reverse edges in the residual graph?**  
-  **Answer:** Reverse edges allow the algorithm to cancel or reroute previously pushed flow if a better global route exists.
-
-* **Question: When does the Ford-Fulkerson algorithm terminate?**  
-  **Answer:** It terminates when the DFS cannot find any path from source to sink with positive residual capacity.
-
-* **Question: What is the bottleneck capacity of an augmenting path?**  
-  **Answer:** It is the minimum residual capacity among all edges on that augmenting path.

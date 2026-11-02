@@ -213,19 +213,3 @@ The graph in [`algorithms/scc/TarjanAlgo.java`](file:///Users/manthan/Desktop/DS
 | :--- | :--- | :--- |
 | **Time Complexity** | $\mathcal{O}(V + E)$ | Each vertex and edge is processed once during the single DFS pass. |
 | **Space Complexity** | $\mathcal{O}(V)$ | Requires storage for arrays `disc`, `low`, `onStack`, and the recursion stack. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: How does Tarjan algorithm differ from Kosaraju algorithm?**  
-  **Answer:** Tarjan algorithm uses one DFS pass and no graph reversal. Kosaraju algorithm uses two DFS passes and reverses the graph.
-
-* **Question: What is a low-link value?**  
-  **Answer:** It is the smallest discovery time of any node reachable from the current subtree through back-edges.
-
-* **Question: When does the algorithm identify an SCC root?**  
-  **Answer:** A node `u` is an SCC root when `low[u] == disc[u]`.
-
-* **Question: Why do we use the onStack array?**  
-  **Answer:** It prevents cross-edges to previously extracted components from incorrectly lowering the low-link value.

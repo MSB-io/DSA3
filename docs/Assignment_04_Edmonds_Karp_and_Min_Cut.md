@@ -217,19 +217,3 @@ Capacities:
 | **Max Flow Computation** | $\mathcal{O}(E \cdot \text{max flow})$ | Dependent on path augmentation count in the residual graph. |
 | **Cut Set Extraction** | $\mathcal{O}(V^2)$ | A nested loop evaluates all vertex pairs in the adjacency matrix. |
 | **Space Complexity** | $\mathcal{O}(V^2)$ | Requires storage for capacity and residual matrices of size $V \times V$. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: What is a cut in a flow network?**  
-  **Answer:** A cut is a division of network vertices into two sets $S$ and $T$ such that source $s \in S$ and sink $t \in T$.
-
-* **Question: What is the capacity of a cut?**  
-  **Answer:** It is the sum of capacities of all original edges directed from set $S$ to set $T$.
-
-* **Question: What does the Max-Flow Min-Cut theorem state?**  
-  **Answer:** The value of the maximum flow in a network strictly equals the capacity of the minimum cut.
-
-* **Question: How does the algorithm find the minimum cut set?**  
-  **Answer:** It identifies all edges pointing from residual-reachable nodes to residual-unreachable nodes.

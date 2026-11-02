@@ -114,7 +114,7 @@ DSA3/
 
 ## 3. Standardized Assignment Reports (`docs/`)
 
-All 16 technical specification reports follow the standard format (Definition, Mermaid diagrams, Procedure, Code Walkthrough, Execution Trace, Complexity proofs, and Viva Q&A):
+All 16 technical specification reports follow the standard format (Definition, Mermaid diagrams, Procedure, Code Walkthrough, Execution Trace, and Complexity proofs):
 
 | Assignment # | Topic & Algorithm | Documentation Guide |
 | :---: | :--- | :--- |

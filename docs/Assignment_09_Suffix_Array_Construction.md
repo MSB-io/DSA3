@@ -135,13 +135,3 @@ For the string `"banana"` ($N = 6$):
 | **Naive Suffix Sorting** | $\mathcal{O}(N^2 \log N)$ | $\mathcal{O}(N)$ | Pairwise string comparison takes $\mathcal{O}(N)$ for each of the $N \log N$ sort steps. |
 | **Prefix Doubling** | $\mathcal{O}(N \log^2 N)$ | $\mathcal{O}(N)$ | $\log N$ doubling phases. Each phase performs an $\mathcal{O}(N \log N)$ comparison sort. |
 | **Prefix Doubling with Radix Sort** | $\mathcal{O}(N \log N)$ | $\mathcal{O}(N)$ | Uses two-pass counting sort on the rank pairs in each phase. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: How does a Suffix Array enable fast pattern searching?**  
-  **Answer:** Because suffixes in the array are sorted alphabetically, binary search can locate any pattern of length $M$ in $\mathcal{O}(M \log N)$ time.
-
-* **Question: What is the advantage of Suffix Array over a Suffix Tree?**  
-  **Answer:** Suffix Arrays use significantly less memory (a simple 32-bit integer array of size $N$ vs. complex tree nodes with pointer overhead), making them much more cache-friendly.

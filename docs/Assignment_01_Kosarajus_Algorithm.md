@@ -249,19 +249,3 @@ The graph in [`algorithms/scc/KosarajusAlgo.java`](file:///Users/manthan/Desktop
 | :--- | :--- | :--- |
 | **Time Complexity** | $\mathcal{O}(V + E)$ | Two DFS passes and one edge-reversal pass execute in linear time. |
 | **Space Complexity** | $\mathcal{O}(V + E)$ | Requires storage for the transposed adjacency list and the stack. |
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: What is a Strongly Connected Component?**  
-  **Answer:** It is a sub-graph where every node can reach every other node in both directions.
-
-* **Question: Why does a single DFS fail to separate SCCs?**  
-  **Answer:** A single DFS traverses one-way cross-component edges and groups multiple components into one.
-
-* **Question: Why must you reverse all edges?**  
-  **Answer:** Edge reversal preserves internal cycles but reverses cross-component edges. This prevents the second DFS from leaving the component.
-
-* **Question: What is the function of the Stack?**  
-  **Answer:** The stack orders nodes by finish time. This ensures that the algorithm visits source components first in Step 3.

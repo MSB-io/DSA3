@@ -137,13 +137,3 @@ Inserting: `"apple"`, `"app"`, `"apt"`, `"bat"`:
 | **Delete** | $\mathcal{O}(L)$ | $\mathcal{O}(L)$ | Recursive call stack depth equals word length $L$. |
 
 *(where $L$ is the length of the string).*
-
----
-
-## 6. Technical Questions and Answers
-
-* **Question: What is the primary advantage of a Trie over a HashSet for string lookup?**  
-  **Answer:** A HashSet computes a hash of the entire string ($\mathcal{O}(L)$) and cannot perform prefix queries or alphabetical sorting. A Trie answers `startsWith` and autocomplete queries in $\mathcal{O}(L)$ without examining unshared characters.
-
-* **Question: What is a Compressed Trie (Radix Tree)?**  
-  **Answer:** A Radix Tree merges single-child nodes into single edges containing strings (for example, combining `p -> l -> e` into edge `"ple"`), saving pointer memory.
