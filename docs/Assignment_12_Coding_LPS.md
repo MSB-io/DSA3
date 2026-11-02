@@ -142,3 +142,4 @@ For the pattern `"AAACAAAA"` ($M = 8$):
 | :--- | :--- | :--- |
 | **Time Complexity** | $\mathcal{O}(M)$ | In each step, either $i$ increments or $\text{len}$ decrements. The value of $\text{len}$ cannot decrease more times than it has increased. Total steps $\le 2M$. |
 | **Space Complexity** | $\mathcal{O}(M)$ | Requires an integer array of size $M$ to store prefix lengths. |
+

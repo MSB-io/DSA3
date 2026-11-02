@@ -1,7 +1,7 @@
 # DSA 3: Advanced Data Structures and Algorithms
 
 This repository contains implementations, technical reports, and explanatory guides for all algorithms covered in DSA 3.  
-Topics include Strongly Connected Components (SCC), Network Flow and Minimum Cut, Dynamic Programming, Advanced String Processing, Tree & Range Query Data Structures, and Java Bytecode Architecture.
+Topics include Strongly Connected Components (SCC), Network Flow and Minimum Cut, Dynamic Programming, Advanced String Processing, and Tree & Range Query Data Structures (Segment Tree & Binary Indexed Tree / BIT).
 
 ---
 
@@ -32,10 +32,9 @@ DSA3/
 │   │   ├── LPSDemo.java              # 13. Coding LPS (Longest Prefix Suffix)
 │   │   ├── KMPSearch.java            # KMP Pattern Search
 │   │   └── Manacher.java             # 14. Manacher's O(N) Palindromic Substring
-│   ├── trees/                         # Tree & Range Query Data Structures
-│   │   └── SegmentTree.java          # 15. Segment Tree with Lazy Propagation
-│   └── bytecode/                      # JVM Foundations & Architecture
-│       └── BytecodeDemo.java         # 16. Java Bytecode Execution & Stack Operations
+│   └── trees/                         # Tree & Range Query Data Structures
+│       ├── SegmentTree.java          # 15. Segment Tree with Lazy Propagation
+│       └── BinaryIndexedTree.java    # 16. Binary Indexed Tree (BIT / Fenwick Tree)
 ├── docs/                              # Standardized Assignment Guides (Exact 15)
 │   ├── Assignment_01_Kosarajus_Algorithm.md
 │   ├── Assignment_02_Tarjans_Algorithm.md
@@ -51,7 +50,7 @@ DSA3/
 │   ├── Assignment_12_Coding_LPS.md
 │   ├── Assignment_13_Manachers_Algorithm.md
 │   ├── Assignment_14_Segment_Tree_Lazy_Propagation.md
-│   └── Assignment_15_Java_Bytecode.md
+│   └── Assignment_15_Binary_Indexed_Tree.md
 ├── project/                           # Internal Mini-Project (Project 15)
 │   ├── TrieDictionary.java           # Self-contained Trie Dictionary & Autocomplete CLI
 │   └── PROJECT_REPORT.md             # Formal Project Specification Report & Rubric Tests
@@ -110,14 +109,7 @@ DSA3/
 | # | Algorithm / Data Structure | File | Core Concept / Technique | Time | Space |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | **15** | **Segment Tree (Lazy Propagation)** | [`SegmentTree.java`](file:///Users/manthan/Desktop/DSA3/algorithms/trees/SegmentTree.java) | Recursive binary tree with lazy push-down for range sum and updates | $\mathcal{O}(\log N)$ per query/update | $\mathcal{O}(4N)$ |
-
----
-
-### F. JVM Architecture & Execution (`algorithms/bytecode/`)
-
-| # | Topic / Execution Model | File | Core Concept / Technique | Execution Model |
-| :-: | :--- | :--- | :--- | :--- |
-| **16** | **Java Bytecode** | [`BytecodeDemo.java`](file:///Users/manthan/Desktop/DSA3/algorithms/bytecode/BytecodeDemo.java) | Stack-based intermediate JVM opcodes, operand stack, and local variable frames | JVM Interpretation & JIT Compilation |
+| **16** | **Binary Indexed Tree (BIT Code)** | [`BinaryIndexedTree.java`](file:///Users/manthan/Desktop/DSA3/algorithms/trees/BinaryIndexedTree.java) | Prefix and range sums via bitwise lowest set bit `(i & -i)` | $\mathcal{O}(\log N)$ per query/update | $\mathcal{O}(N)$ |
 
 ---
 
@@ -141,7 +133,7 @@ The 15 official course assignment reports follow the standardized technical repo
 | **12** | Coding LPS (Longest Prefix Suffix) | [`Assignment_12_Coding_LPS.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_12_Coding_LPS.md) |
 | **13** | Manacher's Algorithm ($\mathcal{O}(N)$ Palindrome) | [`Assignment_13_Manachers_Algorithm.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_13_Manachers_Algorithm.md) |
 | **14** | Segment Tree with Lazy Propagation | [`Assignment_14_Segment_Tree_Lazy_Propagation.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_14_Segment_Tree_Lazy_Propagation.md) |
-| **15** | Java Bytecode & JVM Execution Model | [`Assignment_15_Java_Bytecode.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_15_Java_Bytecode.md) |
+| **15** | Binary Indexed Tree (BIT Code) | [`Assignment_15_Binary_Indexed_Tree.md`](file:///Users/manthan/Desktop/DSA3/docs/Assignment_15_Binary_Indexed_Tree.md) |
 
 ---
 
@@ -166,16 +158,18 @@ Compile and execute any component from the repository root:
 javac project/TrieDictionary.java && java project.TrieDictionary
 ```
 
-### Course Algorithms & Bytecode Inspection
+### Tree & Range Query Data Structures (Segment Tree & BIT Code)
 ```bash
-# Java Bytecode Execution & Disassembly
-javac algorithms/bytecode/*.java && java algorithms.bytecode.BytecodeDemo
-javap -c algorithms.bytecode.BytecodeDemo
+# Compile and run Binary Indexed Tree (BIT)
+javac algorithms/trees/BinaryIndexedTree.java && java algorithms.trees.BinaryIndexedTree
 
-# Tree & Range Query Data Structures
-javac algorithms/trees/*.java && java algorithms.trees.SegmentTree
+# Compile and run Segment Tree with Lazy Propagation
+javac algorithms/trees/SegmentTree.java && java algorithms.trees.SegmentTree
+```
 
-# Strongly Connected Components
+### Graph & Dynamic Programming Algorithms
+```bash
+# Strongly Connected Components (Kosaraju / Tarjan)
 javac algorithms/scc/*.java && java algorithms.scc.KosarajusAlgo
 
 # Network Flow and Min-Cut
