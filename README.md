@@ -147,7 +147,7 @@ All 16 technical specification reports follow the standard format (Definition, M
 | Deliverable | File | Description |
 | :--- | :--- | :--- |
 | **Source Code** | [`TrieDictionary.java`](file:///Users/manthan/Desktop/DSA3/project/TrieDictionary.java) | Single self-contained runnable application featuring dynamic `TreeMap` child mapping, insertion, exact definition retrieval, prefix autocomplete, safe memory-pruned deletion, and automated test suite. |
-| **Technical Report** | [`PROJECT_REPORT.md`](file:///Users/manthan/Desktop/DSA3/project/PROJECT_REPORT.md) | Complete specification document containing problem statement, objectives, Mermaid architecture diagrams, $\mathcal{O}(L)$ complexity proofs, rubric test validation, and viva defense cheat sheet. |
+| **Technical Report** | [`PROJECT_REPORT.md`](file:///Users/manthan/Desktop/DSA3/project/PROJECT_REPORT.md) | Complete specification document containing problem statement, objectives, Mermaid architecture diagrams, $\mathcal{O}(L)$ complexity proofs, and rubric test validation. |
 
 ---
 

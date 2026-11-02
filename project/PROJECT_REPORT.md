@@ -211,18 +211,3 @@ java project.TrieDictionary
 --------------------------------------------------
 ```
 
----
-
-## 8. Viva Preparation & Defense Cheat Sheet
-
-If the professor asks questions during the project evaluation, here are your direct answers:
-
-* **Q: *"Why did you use `TreeMap` instead of a 26-element array `TrieNode[26]`?"***  
-  **A:** A 26-element array wastes memory because most slots remain null, and it can only store lowercase English characters `a-z`. `TreeMap` dynamically allocates memory only when a character is used, supports any character (including uppercase and symbols), and automatically orders children so autocomplete suggestions are returned in alphabetical order.
-
-* **Q: *"What is the time complexity of autocomplete?"***  
-  **A:** $\mathcal{O}(P + K)$, where $P$ is the prefix length (to walk to the prefix node) and $K$ is the sum of characters in the matching words. It never depends on the total dictionary size $N$.
-
-* **Q: *"How does deletion avoid deleting longer words that share the prefix?"***  
-  **A:** When deleting `"app"`, we only flip `current.isEndOfWord = false`. Because `"apple"` still branches from that node, the node has children (`children.isEmpty() == false`), so it is not deleted from memory. Only orphan leaf nodes with no children are pruned during backtracking.
-
