@@ -195,19 +195,33 @@ From the root directory of the repository:
 # Compile the project
 javac project/TrieDictionary.java
 
-# Run the project (automatically runs test suite, then launches interactive CLI)
+# Run the project demonstration
 java project.TrieDictionary
 ```
 
-### Interactive Menu Options
+### Sample Console Execution Output
 ```
---------------------------------------------------
- 1. Search Word & View Definition
- 2. Live Autocomplete (Type a Prefix)
- 3. Add New Word & Definition
- 4. Delete Word from Dictionary
- 5. View Total Stored Words
- 6. Exit Demo
---------------------------------------------------
+=================================================
+   TRIE DICTIONARY & AUTOCOMPLETE DEMONSTRATION  
+=================================================
+
+[TEST 1] Exact Word Search:
+ - Search 'apple': A sweet red or green fruit.
+ - Search 'app':   A mobile or desktop application.
+ - Search 'appl':  null (Prefix only -> null)
+
+[TEST 2] Autocomplete Suggestions for Prefix 'ap':
+ - Results: [app, apple, application, apt]
+
+[TEST 3] Safe Deletion of 'app':
+ - Search 'app' post-delete:   null (Deleted)
+ - Search 'apple' post-delete: A sweet red or green fruit. (Preserved)
+ - Autocomplete for 'ap':      [apple, application, apt]
+
+[TEST 4] Edge Cases:
+ - Empty query search:     null
+ - Non-existent prefix:    []
+ - Case-insensitive lookup: A long yellow fruit.
+=================================================
 ```
 
