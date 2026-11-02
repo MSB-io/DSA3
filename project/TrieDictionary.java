@@ -21,7 +21,8 @@ public class TrieDictionary {
 
     // 2. INSERTION: O(L)
     public void insert(String word, String definition) {
-        if (word == null || word.trim().isEmpty()) return;
+        if (word == null || word.trim().isEmpty())
+            return;
         TrieNode curr = root;
         for (char ch : word.trim().toLowerCase().toCharArray()) {
             curr.children.putIfAbsent(ch, new TrieNode());
@@ -33,11 +34,13 @@ public class TrieDictionary {
 
     // 3. SEARCH EXACT WORD: O(L)
     public String search(String word) {
-        if (word == null || word.trim().isEmpty()) return null;
+        if (word == null || word.trim().isEmpty())
+            return null;
         TrieNode curr = root;
         for (char ch : word.trim().toLowerCase().toCharArray()) {
             curr = curr.children.get(ch);
-            if (curr == null) return null;
+            if (curr == null)
+                return null;
         }
         return curr.isEndOfWord ? curr.definition : null;
     }
@@ -45,12 +48,14 @@ public class TrieDictionary {
     // 4. AUTOCOMPLETE (PREFIX SEARCH): O(P + K)
     public List<String> autocomplete(String prefix) {
         List<String> results = new ArrayList<>();
-        if (prefix == null || prefix.trim().isEmpty()) return results;
+        if (prefix == null || prefix.trim().isEmpty())
+            return results;
 
         TrieNode curr = root;
         for (char ch : prefix.trim().toLowerCase().toCharArray()) {
             curr = curr.children.get(ch);
-            if (curr == null) return results; // prefix does not exist
+            if (curr == null)
+                return results; // prefix does not exist
         }
         dfs(curr, new StringBuilder(prefix.trim().toLowerCase()), results);
         return results;
@@ -69,20 +74,23 @@ public class TrieDictionary {
 
     // 5. SAFE DELETION: O(L)
     public boolean delete(String word) {
-        if (word == null || word.trim().isEmpty()) return false;
+        if (word == null || word.trim().isEmpty())
+            return false;
         return deleteHelper(root, word.trim().toLowerCase(), 0);
     }
 
     private boolean deleteHelper(TrieNode curr, String word, int depth) {
         if (depth == word.length()) {
-            if (!curr.isEndOfWord) return false;
+            if (!curr.isEndOfWord)
+                return false;
             curr.isEndOfWord = false;
             curr.definition = null;
             return curr.children.isEmpty(); // return true if safe to prune
         }
         char ch = word.charAt(depth);
         TrieNode child = curr.children.get(ch);
-        if (child == null) return false;
+        if (child == null)
+            return false;
 
         boolean shouldPrune = deleteHelper(child, word, depth + 1);
         if (shouldPrune) {
