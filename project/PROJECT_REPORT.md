@@ -225,3 +225,4 @@ If the professor asks questions during the project evaluation, here are your dir
 
 * **Q: *"How does deletion avoid deleting longer words that share the prefix?"***  
   **A:** When deleting `"app"`, we only flip `current.isEndOfWord = false`. Because `"apple"` still branches from that node, the node has children (`children.isEmpty() == false`), so it is not deleted from memory. Only orphan leaf nodes with no children are pruned during backtracking.
+

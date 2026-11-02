@@ -472,3 +472,4 @@ public class TrieDictionary {
         scanner.close();
     }
 }
+
