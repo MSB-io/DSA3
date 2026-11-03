@@ -110,10 +110,12 @@ public class Trie {
         return true;
     }
 
-    // helper function: recursively saare words dhoondta hai jo iss node ke niche hain
+    // helper function: recursively saare words dhoondta hai jo iss node ke niche
+    // hain
     public static void collectWords(Node curr, String word, List<String> results) {
 
-        // agar iss node pe word khatam ho raha hai (eow == true) toh results me add karo
+        // agar iss node pe word khatam ho raha hai (eow == true) toh results me add
+        // karo
         if (curr.eow == true) {
             results.add(word);
         }
@@ -174,12 +176,12 @@ public class Trie {
 
         // search for prefix
         System.out.println(startsWith("any")); // should return true
-        System.out.println(startsWith("th"));  // should return true
+        System.out.println(startsWith("th")); // should return true
         System.out.println(startsWith("abc")); // should return false
 
         // autocomplete suggestions
-        System.out.println("Autocomplete for 'th':  " + autocomplete("th"));  // [the, their, there]
-        System.out.println("Autocomplete for 'a':   " + autocomplete("a"));   // [a, any]
+        System.out.println("Autocomplete for 'th':  " + autocomplete("th")); // [the, their, there]
+        System.out.println("Autocomplete for 'a':   " + autocomplete("a")); // [a, any]
         System.out.println("Autocomplete for 'xyz': " + autocomplete("xyz")); // []
     }
 }
