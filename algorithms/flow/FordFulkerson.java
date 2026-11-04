@@ -65,13 +65,15 @@ public class FordFulkerson {
     }
 
     public static void main(String[] args) {
+        // Node mapping: 0 = s, 1 = 1, 2 = 2, 3 = 3, 4 = t
         int[][] capacity = {
-                { 0, 10, 5, 0 },
-                { 0, 0, 0, 10 },
-                { 0, 0, 0, 10 },
-                { 0, 0, 0, 0 }
+                { 0, 2, 3, 0, 0 }, // s -> 1 (cap 2), s -> 2 (cap 3)
+                { 0, 0, 0, 0, 3 }, // 1 -> t (cap 3)
+                { 0, 1, 0, 1, 0 }, // 2 -> 1 (cap 1), 2 -> 3 (cap 1)
+                { 0, 0, 0, 0, 3 }, // 3 -> t (cap 3)
+                { 0, 0, 0, 0, 0 }  // t (sink has no outgoing edges)
         };
 
-        System.out.println(maxFlow(capacity, 0, 3));
+        System.out.println("Max Flow = " + maxFlow(capacity, 0, 4));
     }
 }
